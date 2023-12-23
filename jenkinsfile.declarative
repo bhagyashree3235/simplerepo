@@ -4,19 +4,20 @@ tools{maven 'Maven'}
 stages{
   stage(checkout){
         steps{
-          git git@github.com:bhagyashree3235/simplerepo.git
+          git branch: 'main', url: 'https://github.com/bhagyashree3235/simplerepo.git'
         }
   }
-  stage(Build){
-        steps{
-            sh "mvn clean install"
-        }
-  }
-stage(Test){
+  stage(Test){
         steps{
             sh "mvn test"
         }
 }
+stage(Build){
+        steps{
+            sh "mvn clean install"
+            sh "mvn -Dmaven.test.failure.ignore=true clean package"
+        }
+  }
 stage(Deploy){
         steps{
             sh "sudo cp /target/*.war /opt/tomcat/webapps/"
