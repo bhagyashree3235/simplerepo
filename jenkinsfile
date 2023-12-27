@@ -4,7 +4,7 @@ tools{maven 'Maven'}
 stages{
   stage(checkout){
         steps{
-          echo "checkout" 
+          echo "checkout complete" 
         }
   }
   stage(Test){
