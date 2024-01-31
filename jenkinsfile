@@ -1,6 +1,5 @@
 pipeline{
 agent any
-tools{maven 'Maven'}
 stages{
   stage(checkout){
         steps{
@@ -22,10 +21,5 @@ stage(Deploy){
             echo "Deploy stage cmplete successfully" 
         }
 }
-}
-post{
-    success{
-              echo "all stages cmplete successfully" 
-          }
 }
 }
